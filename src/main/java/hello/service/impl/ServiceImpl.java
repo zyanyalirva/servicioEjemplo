@@ -8,9 +8,9 @@ public class ServiceImpl implements Service {
 	@Override
 	public Walmart getInformacion() {
 		Walmart walmart = new Walmart();
-		walmart.setPais("EU");
-		walmart.setOficina("Bentonville");
-		walmart.setInformacion("POC CI/CD");
+		walmart.setPais("MX");
+		walmart.setOficina("Azcapotzalco");
+		walmart.setInformacion("POC");
 		return walmart;
 	}
 
