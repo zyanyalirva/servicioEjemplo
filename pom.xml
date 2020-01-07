@@ -8,7 +8,9 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
     <name>Spring Boot Docker</name>
+   
     <description>POC CI/CD On Premise</description>
+   
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,7 +23,21 @@
         <docker.image.prefix>aikofa</docker.image.prefix>
         <java.version>1.8</java.version>
     </properties>
-
+   
+   <distributionManagement>
+   
+  <repository>
+       <id>nexus-snapshots</id>
+       <url>http://localhost:8081/repository/maven-releases/</url>
+   </repository>
+        <snapshotRepository>
+     <id>nexus-snapshots</id>
+     <name>Nexus snapshots</name>
+     <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+   
+ 
     <build>
         <plugins>
             <plugin>
@@ -29,15 +45,57 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
              <plugin>
-		        <groupId>com.google.cloud.tools</groupId>
-		        <artifactId>jib-maven-plugin</artifactId>
-		        <version>1.8.0</version>
-		        <configuration>
-		          <to>
-		            <image>aikofa/wm-spring-boot-docker</image>
-		          </to>
-		        </configuration>
-		      </plugin>
+       <groupId>com.google.cloud.tools</groupId>
+       <artifactId>jib-maven-plugin</artifactId>
+       <version>1.8.0</version>
+       <configuration>
+         <to>
+           <image>aikofa/wm-spring-boot-docker</image>
+         </to>
+       </configuration>
+     </plugin>
+     
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+      <skip>true</skip>
+  </configuration>
+     </plugin>
+     
+<plugin>
+  <groupId>org.sonatype.plugins</groupId>
+  <artifactId>nexus-staging-maven-plugin</artifactId>
+  <version>1.5.1</version>
+  <executions>
+     <execution>
+        <id>default-deploy</id>
+        <phase>deploy</phase>
+        <goals>
+           <goal>deploy</goal>
+        </goals>
+     </execution>
+  </executions>
+  <configuration>
+     <serverId>nexus-snapshots</serverId>
+     <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+     <skipStaging>true</skipStaging>
+  </configuration>
+</plugin>
+
+<plugin>
+  <artifactId>maven-deploy-plugin</artifactId>
+  <executions>
+     <execution>
+        <id>default-deploy</id>
+        <phase>deploy</phase>
+        <goals>
+           <goal>deploy</goal>
+        </goals>
+     </execution>
+  </executions>
+</plugin>
+
         </plugins>
     </build>
 
