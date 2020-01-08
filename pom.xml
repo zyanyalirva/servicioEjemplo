@@ -78,7 +78,8 @@
   </executions>
   <configuration>
      <serverId>nexus-snapshots</serverId>
-     <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+     <!--nexusUrl>http://localhost:8081/nexus/</nexusUrl-->
+     <nexusUrl>http://Zyanyas-MacBook-Air.local:8081/nexus/</nexusUrl>
      <skipStaging>true</skipStaging>
   </configuration>
 </plugin>
