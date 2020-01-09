@@ -6,7 +6,7 @@
     <groupId>org.springframework</groupId>
     <artifactId>wm-spring-boot-docker</artifactId>
     <version>0.1.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>Spring Boot Docker</name>
    
     <description>POC CI/CD On Premise</description>
@@ -22,6 +22,7 @@
     <properties>
         <docker.image.prefix>aikofa</docker.image.prefix>
         <java.version>1.8</java.version>
+        <start-class>com.walmart.mx.security.auditcontrol.AuditTrailWsMsgProcessorApplication</start-class>
     </properties>
    
    <distributionManagement>
@@ -103,10 +104,22 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <!-- Support for provided tomcat. -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
