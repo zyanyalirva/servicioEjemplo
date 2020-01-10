@@ -1,13 +1,11 @@
-FROM openjdk:8-jdk-alpine
-
-WORKDIR /usr/app
+FROM tomcat:jdk8-openjdk
 
 VOLUME /tmp
 
 ARG DEPENDENCY=./target
 
-COPY ${DEPENDENCY}/wm-spring-boot-docker-0.1.0.jar /usr/app
+COPY ${DEPENDENCY}/wm-spring-boot-docker-0.1.0.war /usr/local/tomcat/webapps/
 
-RUN sh -c 'touch wm-spring-boot-docker-0.1.0.jar'
+EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","wm-spring-boot-docker-0.1.0.jar"]
+CMD ["catalina.sh", "run"]
