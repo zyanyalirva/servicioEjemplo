@@ -14,6 +14,5 @@ Para iniciar el contenedor solo hay que seguir los siguientes pasos:
    3.1. Ingresar: `>Remote Containers`  
    3.2. Seleccionar: `Open Folder in Container`  
    *Se comenzará a crear el contenedor y se cambiará la vista a `Dev Container` lo cual puede tardar un poco al inicio*.  
-4. Al terminar, verificar en la esquina inferior izquierda que esté activada en verde el botón `>< Dev Container`.
-5. Posteriormente podemos verificar que las extensionas de nuestro 
-`Dev Container` se encuentren instaladas y activadas.
+4. Al terminar, verificar en la esquina inferior izquierda que esté activado en verde el botón `>< Dev Container`.
+5. Posteriormente podemos verificar que las extensiones (`Ctrl + Shift + X`) de nuestro `Dev Container` se encuentren instaladas y activadas.
