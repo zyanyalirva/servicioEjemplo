@@ -10,7 +10,7 @@ public class ServiceImpl implements Service {
 		Walmart walmart = new Walmart();
 		walmart.setPais("MEX");
 		walmart.setOficina("Azcapotzalco");
-		walmart.setInformacion("POC");
+		walmart.setInformacion("POC-WALMEX");
 		return walmart;
 	}
 
