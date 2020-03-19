@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
@@ -8,9 +7,9 @@
     <version>1.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Spring Boot Docker</name>
-   
+
     <description>POC CI/CD On Premise</description>
-   
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -22,104 +21,103 @@
     <properties>
         <docker.image.prefix>aikofa</docker.image.prefix>
         <java.version>1.8</java.version>
-        <start-class>com.walmart.mx.security.auditcontrol.AuditTrailWsMsgProcessorApplication</start-class>
+        <start-class>hello.Application</start-class>
     </properties>
-   
-   <distributionManagement>
-   
-  <repository>
-       <id>nexus-snapshots</id>
-       <!--url>http://192.168.133.136:8081/repository/maven-releases/</url-->
-       <url>http://192.168.133.136:8081/repository/maven-releases/</url>
-   </repository>
-        <snapshotRepository>
-     <id>nexus-snapshots</id>
-     <name>Nexus snapshots</name>
-     <!--url>http://192.168.133.136:8081/repository/maven-snapshots/</url-->
-     <url>http://192.168.133.136:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-   
- 
+
+    <!-- <distributionManagement> -->
+        <!-- <repository> -->
+            <!-- <id>nexus-snapshots</id> -->
+            <!--url>http://192.168.133.136:8081/repository/maven-releases/</url-->
+            <!-- <url>http://local.nexus:49001/repository/maven-releases/</url> -->
+        <!-- </repository> -->
+        <!-- <snapshotRepository> -->
+            <!-- <id>nexus-snapshots</id> -->
+            <!-- <name>Nexus snapshots</name> -->
+            <!--url>http://192.168.133.136:8081/repository/maven-snapshots/</url-->
+            <!-- <url>http://local.nexus:49001/repository/maven-snapshots/</url> -->
+        <!-- </snapshotRepository> -->
+    <!-- </distributionManagement> -->
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-             <plugin>
-       <groupId>com.google.cloud.tools</groupId>
-       <artifactId>jib-maven-plugin</artifactId>
-       <version>1.8.0</version>
-       <configuration>
-         <to>
-           <image>aikofa/wm-spring-boot-docker</image>
-         </to>
-       </configuration>
-     </plugin>
-     
-     <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-deploy-plugin</artifactId>
-        <configuration>
-      <skip>true</skip>
-  </configuration>
-     </plugin>
-     
-<plugin>
-  <groupId>org.sonatype.plugins</groupId>
-  <artifactId>nexus-staging-maven-plugin</artifactId>
-  <version>1.5.1</version>
-  <executions>
-     <execution>
-        <id>default-deploy</id>
-        <phase>deploy</phase>
-        <goals>
-           <goal>deploy</goal>
-        </goals>
-     </execution>
-  </executions>
-  <configuration>
-     <serverId>nexus-snapshots</serverId>
-     <!--nexusUrl>http://192.168.133.136:8081/nexus/</nexusUrl-->
-     <nexusUrl>http://192.168.133.136:8081/nexus/</nexusUrl>
-     <skipStaging>true</skipStaging>
-  </configuration>
-</plugin>
 
-<plugin>
-  <artifactId>maven-deploy-plugin</artifactId>
-  <executions>
-     <execution>
-        <id>default-deploy</id>
-        <phase>deploy</phase>
-        <goals>
-           <goal>deploy</goal>
-        </goals>
-     </execution>
-  </executions>
-</plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>1.8.0</version>
+                <configuration>
+                    <to>
+                        <image>aikofa/wm-spring-boot-docker</image>
+                    </to>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <!-- <plugin> -->
+                <!-- <groupId>org.sonatype.plugins</groupId> -->
+                <!-- <artifactId>nexus-staging-maven-plugin</artifactId> -->
+                <!-- <version>1.5.1</version> -->
+                <!-- <executions> -->
+                    <!-- <execution> -->
+                        <!-- <id>default-deploy</id> -->
+                        <!-- <phase>deploy</phase> -->
+                        <!-- <goals> -->
+                            <!-- <goal>deploy</goal> -->
+                        <!-- </goals> -->
+                    <!-- </execution> -->
+                <!-- </executions> -->
+                <!-- <configuration> -->
+                    <!-- <serverId>nexus-snapshots</serverId> -->
+                    <!--nexusUrl>http://192.168.133.136:8081/nexus/</nexusUrl-->
+                    <!-- <nexusUrl>http://local.nexus:49001/nexus/</nexusUrl> -->
+                    <!-- <skipStaging>true</skipStaging> -->
+                <!-- </configuration> -->
+            <!-- </plugin> -->
+
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
 
     <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <exclusions>
-            <exclusion>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-tomcat</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
-    <!-- Support for provided tomcat. -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-tomcat</artifactId>
-        <scope>provided</scope>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Support for provided tomcat. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
