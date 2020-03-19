@@ -4,7 +4,7 @@
 
     <groupId>org.springframework</groupId>
     <artifactId>wm-spring-boot-docker</artifactId>
-    <version>0.1.2</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Spring Boot Docker</name>
 
@@ -38,13 +38,13 @@
         <!-- </snapshotRepository> -->
     <!-- </distributionManagement> -->
 
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
