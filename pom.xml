@@ -21,23 +21,22 @@
     <properties>
         <docker.image.prefix>aikofa</docker.image.prefix>
         <java.version>1.8</java.version>
-        <start-class>com.walmart.mx.security.auditcontrol.AuditTrailWsMsgProcessorApplication</start-class>
+        <start-class>hello.Application</start-class>
     </properties>
 
-    <distributionManagement>
-
-        <repository>
-            <id>nexus-snapshots</id>
+    <!-- <distributionManagement> -->
+        <!-- <repository> -->
+            <!-- <id>nexus-snapshots</id> -->
             <!--url>http://192.168.133.136:8081/repository/maven-releases/</url-->
-            <url>http://Zyanyas-MacBook-Air.local:8081/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus snapshots</name>
+            <!-- <url>http://local.nexus:49001/repository/maven-releases/</url> -->
+        <!-- </repository> -->
+        <!-- <snapshotRepository> -->
+            <!-- <id>nexus-snapshots</id> -->
+            <!-- <name>Nexus snapshots</name> -->
             <!--url>http://192.168.133.136:8081/repository/maven-snapshots/</url-->
-            <url>http://Zyanyas-MacBook-Air.local:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+            <!-- <url>http://local.nexus:49001/repository/maven-snapshots/</url> -->
+        <!-- </snapshotRepository> -->
+    <!-- </distributionManagement> -->
 
 
     <build>
@@ -65,26 +64,26 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.5.1</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <serverId>nexus-snapshots</serverId>
+            <!-- <plugin> -->
+                <!-- <groupId>org.sonatype.plugins</groupId> -->
+                <!-- <artifactId>nexus-staging-maven-plugin</artifactId> -->
+                <!-- <version>1.5.1</version> -->
+                <!-- <executions> -->
+                    <!-- <execution> -->
+                        <!-- <id>default-deploy</id> -->
+                        <!-- <phase>deploy</phase> -->
+                        <!-- <goals> -->
+                            <!-- <goal>deploy</goal> -->
+                        <!-- </goals> -->
+                    <!-- </execution> -->
+                <!-- </executions> -->
+                <!-- <configuration> -->
+                    <!-- <serverId>nexus-snapshots</serverId> -->
                     <!--nexusUrl>http://192.168.133.136:8081/nexus/</nexusUrl-->
-                    <nexusUrl>http://Zyanyas-MacBook-Air.local:8081/nexus/</nexusUrl>
-                    <skipStaging>true</skipStaging>
-                </configuration>
-            </plugin>
+                    <!-- <nexusUrl>http://local.nexus:49001/nexus/</nexusUrl> -->
+                    <!-- <skipStaging>true</skipStaging> -->
+                <!-- </configuration> -->
+            <!-- </plugin> -->
 
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
