@@ -24,19 +24,19 @@
         <start-class>hello.Application</start-class>
     </properties>
 
-    <!-- <distributionManagement> -->
-        <!-- <repository> -->
-            <!-- <id>nexus-snapshots</id> -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-snapshots</id>
             <!--url>http://192.168.133.136:8081/repository/maven-releases/</url-->
-            <!-- <url>http://local.nexus:49001/repository/maven-releases/</url> -->
-        <!-- </repository> -->
-        <!-- <snapshotRepository> -->
-            <!-- <id>nexus-snapshots</id> -->
-            <!-- <name>Nexus snapshots</name> -->
+            <url>http://localhost:48001/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus snapshots</name>
             <!--url>http://192.168.133.136:8081/repository/maven-snapshots/</url-->
-            <!-- <url>http://local.nexus:49001/repository/maven-snapshots/</url> -->
-        <!-- </snapshotRepository> -->
-    <!-- </distributionManagement> -->
+            <url>http://localhost:48001/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <plugins>
