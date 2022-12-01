@@ -1,6 +1,5 @@
 package hello;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hello.dto.Walmart;
 import hello.service.Service;
+import hello.service.impl.ServiceImpl;
 
 @SpringBootApplication
 @RestController
 public class Application extends SpringBootServletInitializer{
 
-	@Autowired
 	private Service service;
 	
 	@RequestMapping("/")
 	public ResponseEntity<Walmart> home() {
-		// service = new ServiceImpl();
+		service = new ServiceImpl();
 		Walmart walmart = service.getInformacion();
 		ResponseEntity<Walmart> result = new ResponseEntity<Walmart>(walmart,HttpStatus.OK);
 		return result;
