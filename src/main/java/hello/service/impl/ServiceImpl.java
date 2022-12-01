@@ -11,6 +11,11 @@ public class ServiceImpl implements Service {
 		walmart.setPais("EUA");
 		walmart.setOficina("Texas");
 		walmart.setInformacion("POC-MEX");
+
+		System.out.println("EUA");
+		System.out.println("Texas");
+		System.out.println("POC-MEX");
+
 		return walmart;
 	}
 
